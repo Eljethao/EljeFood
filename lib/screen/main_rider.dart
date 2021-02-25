@@ -1,0 +1,43 @@
+import 'package:boydevfood/utility/my_style.dart';
+import 'package:boydevfood/utility/signout_process.dart';
+import 'package:flutter/material.dart';
+
+class MainRider extends StatefulWidget {
+  @override
+  _MainRiderState createState() => _MainRiderState();
+}
+
+class _MainRiderState extends State<MainRider> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Main Rider'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.exit_to_app),
+            onPressed: () => signOutProcess(context),
+          )
+        ],
+      ),
+      drawer: showDrawer(),
+    );
+  }
+
+  Drawer showDrawer() => Drawer(
+        child: ListView(
+          children: <Widget>[
+            showHeader(),
+          ],
+        ),
+      );
+
+  UserAccountsDrawerHeader showHeader() {
+    return UserAccountsDrawerHeader(
+      decoration: MyStyle().myBoxDecoration('rider.jpg'),
+      currentAccountPicture: MyStyle().showLogo(),
+      accountName: Text('Rider Login',style: TextStyle(color: Colors.black),),
+      accountEmail: Text('Login',style: TextStyle(color: Colors.black),),
+    );
+  }
+}
